@@ -17,11 +17,9 @@ setRandomLocation = function(p) {
     radius: radius
   }, function(data, status) {
     if (status === google.maps.StreetViewStatus.OK) {
-      console.log(data);
       p[0].setPano(data.location.pano);
     } else {
       setRandomLocation(p)
-      console.log("no street view");
     }
   });
 
@@ -42,15 +40,6 @@ $(function() {
         panos.push(newPano);
     }
     console.log(panos)
-
-    // setInterval(function() {
-    //   panos.forEach(function(e) {
-    //     e.setPov({
-    //       heading: e.pov.heading +=1,
-    //       pitch: e.pov.pitch
-    //     });
-    //   })
-    // }, 300)
 
     setInterval(function() {
       for (var i = 0; i < panos.length; i++) {

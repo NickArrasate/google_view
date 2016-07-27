@@ -28,9 +28,9 @@ setRandomLocation = function(p) {
 $(function() {
   GoogleMapsLoader.load(function(google) {
     var panos = [];
-    for (var i = 0; i < 6; i++) {
+
       newPano = new google.maps.StreetViewPanorama(
-        document.getElementById('pano' + i), {
+        document.getElementById('pano0'), {
           pov: {
             heading: 0,
             pitch: 0
@@ -38,7 +38,7 @@ $(function() {
         });
         setRandomLocation([newPano]);
         panos.push(newPano);
-    }
+
     console.log(panos)
 
     setInterval(function() {
@@ -46,7 +46,7 @@ $(function() {
         setRandomLocation([panos[i]]);
         $("#pano" + i + " p").text(panos[i].location.description);
       }
-    }, 10000)
+    }, 6000)
 
   });
 });
